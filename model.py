@@ -62,15 +62,7 @@ def _preprocess_data(data):
     
 
     feature_vector_df = feature_vector_df[(feature_vector_df['Commodities'] == 'APPLE GOLDEN DELICIOUS')]
-    predict_vector = feature_vector_df
-    predict_vector['Date'] = pd.to_datetime(predict_vector['Date'])
-    predict_vector['Month'] =  [row.month for row in predict_vector['Date']]
-    predict_vector['Season'] = ['summer' if m in [1, 2, 12] else 'autumn' if m in [3, 4, 5] else 'winter' if m in [6,7,8] else 'spring' for m in predict_vector['Month']]
-    predict_vector = pd.get_dummies(predict_vector,columns=['Province','Container','Size_Grade','Season'],drop_first=True)
-    predict_vector.columns = [col.replace(" ","_") for col in predict_vector.columns]
-    predict_vector.columns = [col.replace(".","_") for col in predict_vector.columns]
-    predict_vector.columns = [col.replace("-","_") for col in predict_vector.columns]
-    predict_vector = predict_vector.drop(['Date','Commodities'],axis=1)
+    predict_vector = feature_vector_df[['Total_Qty_Sold','Stock_On_Hand','Low_Price','High_Price','Sales_Total','Total_Kg_Sold','Province','Container','Size_Grade']]
     
                                 
     # ------------------------------------------------------------------------
