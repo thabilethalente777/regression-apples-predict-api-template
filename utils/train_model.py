@@ -15,7 +15,7 @@ import pickle
 from sklearn.linear_model import LinearRegression
 
 # Fetch training data and preprocess for modeling
-train = pd.read_csv('data/train_data.csv')
+train = pd.read_csv(r'C:\Users\petro\Desktop\Machine Learning\Advanced_regression_predict-Starter-Data-2629\regression-apples-predict-api-template\assets\data/train_data.csv')
 
 train = train[(train['Commodities'] == 'APPLE GOLDEN DELICIOUS')]
 
